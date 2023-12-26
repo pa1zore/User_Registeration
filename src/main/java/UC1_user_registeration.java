@@ -6,6 +6,15 @@ class User1
     private String firstName;
     private String lastName;
     private String email;
+    private String mobileNumber;
+    public void setMobileNumber(String mobileNumber)
+    {
+        this.mobileNumber=mobileNumber;
+    }
+    public String getMobileNumber()
+    {
+        return this.mobileNumber;
+    }
     public void setEmail(String email)
     {
         this.email=email;
@@ -33,11 +42,12 @@ class User1
 
 
 //parameterized constructor to  initialised objects
-    public User1(String firstName,String lastName,String email)
+    public User1(String firstName,String lastName,String email,String mobileNumber)
     {
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
+        this.mobileNumber=mobileNumber;
     }
     //method to check First  name is valid or not
     public Boolean isValidFirstName()
@@ -82,7 +92,15 @@ class User1
 
         return false;
     }
-
+public boolean isValidMobileNumber()
+{
+    if(mobileNumber.matches("[0-9]{2} [0-9]{10}"))
+    {
+        System.out.println(":valid mobile number");
+        return true;
+    }
+    return false;
+}
 
 
 }
@@ -91,9 +109,10 @@ public class UC1_user_registeration {
     public static void main(String[] args) {
         System.out.println("welcome to user registration program");
         //created object and passed parameter to constructor
-        User1 user= new User1("Pavan","Zore","pavanzore345@gmail.com");
+        User1 user= new User1("Pavan","Zore","pavanzore345@gmail.com","91 8766839783");
         System.out.println(user.isValidFirstName());
         System.out.println(user.isValidLastName());
         System.out.println(user.isValidEmail());
+        System.out.println(user.isValidMobileNumber());
     }
 }
