@@ -1,4 +1,3 @@
-import org.w3c.dom.ls.LSOutput;
 //declear class to find valid and invalid enteries
 class User1
 {
@@ -7,22 +6,22 @@ class User1
     private String lastName;
     private String email;
     private String mobileNumber;
+    private String password;
+    public void setPassword(String password)
+    {
+        this.password=password;
+    }
+
     public void setMobileNumber(String mobileNumber)
     {
         this.mobileNumber=mobileNumber;
     }
-    public String getMobileNumber()
-    {
-        return this.mobileNumber;
-    }
+
     public void setEmail(String email)
     {
         this.email=email;
     }
-    public String getEmail()
-    {
-        return this.email;
-    }
+
     public void setFirstName(String firstName)
     {
         this.firstName=firstName;
@@ -31,23 +30,15 @@ class User1
     {
         this.lastName=lastName;
     }
-    public String getFirstName()
-    {
-        return  this.firstName;
-    }
-    public String getlastName()
-    {
-        return  this.lastName;
-    }
-
 
 //parameterized constructor to  initialised objects
-    public User1(String firstName,String lastName,String email,String mobileNumber)
+    public User1(String firstName,String lastName,String email,String mobileNumber,String password)
     {
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
         this.mobileNumber=mobileNumber;
+        this.password=password;
     }
     //method to check First  name is valid or not
     public Boolean isValidFirstName()
@@ -101,18 +92,26 @@ public boolean isValidMobileNumber()
     }
     return false;
 }
+public boolean isValidPassword()
+{
+    if(password.matches("[a-z]*"))
+    {
 
+    return true;
 
+}
+return false;
 }
 
 public class UC1_user_registeration {
     public static void main(String[] args) {
         System.out.println("welcome to user registration program");
         //created object and passed parameter to constructor
-        User1 user= new User1("Pavan","Zore","pavanzore345@gmail.com","91 8766839783");
+        User1 user= new User1("Pavan","Zore","pavanzore345@gmail.com","91 8766839783","password");
         System.out.println(user.isValidFirstName());
         System.out.println(user.isValidLastName());
         System.out.println(user.isValidEmail());
         System.out.println(user.isValidMobileNumber());
+        System.out.println(user.isValidPassword());
     }
 }

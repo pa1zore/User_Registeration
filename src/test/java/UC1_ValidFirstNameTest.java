@@ -7,7 +7,7 @@ public class UC1_ValidFirstNameTest {
     @BeforeEach
     void setup()
     {//setting constructor with two values to validate
-        user=  new User1("Pavan","Zore","pavanzore345@gmail.com","8766839783");
+        user=  new User1("Pavan","Zore","pavanzore345@gmail.com","8766839783","password");
     }
     @AfterEach
     void end()
@@ -108,6 +108,28 @@ public class UC1_ValidFirstNameTest {
         user.setMobileNumber("91 49304495");
         //when
         boolean actual=user.isValidMobileNumber();
+
+        //then
+        Assertions.assertFalse(actual);
+    }
+    @Test
+    void should_return_true_after_entering_valid_password()
+    {
+        //given
+        user.setPassword("password");
+        //when
+        boolean actual=user.isValidPassword();
+
+        //then
+        Assertions.assertTrue(actual);
+    }
+    @Test
+    void should_return_false_after_entering_Invalid_password()
+    {
+        //given
+        user.setPassword("ssword");
+        //when
+        boolean actual=user.isValidPassword();
 
         //then
         Assertions.assertFalse(actual);
