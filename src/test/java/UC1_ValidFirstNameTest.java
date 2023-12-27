@@ -158,6 +158,7 @@ public class UC1_ValidFirstNameTest {
         //then
         Assertions.assertFalse(actual);
     }
+    @Disabled // because now we are adding 1 special character also in password
     @Test
     void should_return_true_after_entering_password_with8char_and_Atleast_1Uppercase_and_1_numeric_value()
     {
@@ -171,6 +172,31 @@ public class UC1_ValidFirstNameTest {
     }
     @Test
     void should_return_false_after_entering_password_with8char_and_no_1Uppercase_with_no_numeric_value()
+    {
+        //given
+        user.setPassword("Password");
+        //when
+        boolean actual=user.isValidPassword();
+
+        //then
+        Assertions.assertFalse(actual);
+    }
+
+
+
+    @Test
+    void should_return_true_after_entering_password_with8char_and_Atleast_1Uppercase_and_1_numeric_value_special_char()
+    {
+        //given
+        user.setPassword("Pass@wor1");
+        //when
+        boolean actual=user.isValidPassword();
+
+        //then
+        Assertions.assertTrue(actual);
+    }
+    @Test
+    void should_return_false_after_entering_password_with8char_and_no_1Uppercase_with_no_numeric_value_no_special_char()
     {
         //given
         user.setPassword("Password");
