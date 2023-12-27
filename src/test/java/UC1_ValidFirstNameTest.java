@@ -18,7 +18,7 @@ public class UC1_ValidFirstNameTest {
     void should_return_true_after_giving_First_capital_alphabates()
     {
         //given
-        //we entered"Pavan"
+        user.setFirstName("Pavan");
         //when
 
         Boolean actual=user.isValidFirstName();
@@ -112,6 +112,7 @@ public class UC1_ValidFirstNameTest {
         //then
         Assertions.assertFalse(actual);
     }
+    @Disabled//we desabled this line because we have modified code with at least 1 uppercase alphabates
     @Test
     void should_return_true_after_entering_valid_password()
     {
@@ -128,6 +129,28 @@ public class UC1_ValidFirstNameTest {
     {
         //given
         user.setPassword("ssword");
+        //when
+        boolean actual=user.isValidPassword();
+
+        //then
+        Assertions.assertFalse(actual);
+    }
+    @Test
+    void should_return_true_after_entering_password_with8char_and_Atleast_1Uppercase()
+    {
+        //given
+        user.setPassword("Password");
+        //when
+        boolean actual=user.isValidPassword();
+
+        //then
+        Assertions.assertTrue(actual);
+    }
+    @Test
+    void should_return_false_after_entering_password_with8char_and_no_1Uppercase()
+    {
+        //given
+        user.setPassword("password");
         //when
         boolean actual=user.isValidPassword();
 
