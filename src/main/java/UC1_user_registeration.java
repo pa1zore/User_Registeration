@@ -84,7 +84,7 @@ class User1 {
     }
 
     public boolean isValidPassword() {
-        if(password.matches("^(?=.*[A-Z]).{8,}$")) {
+        if(password.matches("^(?=.*[A-Z])(?=.*[0-9]).{8,}$")) {
             System.out.println("valid password");
             return true;
 
@@ -96,7 +96,7 @@ public class UC1_user_registeration {
     public static void main(String[] args) {
         System.out.println("welcome to user registration program");
         //created object and passed parameter to constructor
-        User1 user = new User1("Pavan", "Zore", "pavanzore345@gmail.com", "91 8766839783", "asswpord");
+        User1 user = new User1("Pavan", "Zore", "pavanzore345@gmail.com", "91 8766839783", "Passwor1");
         System.out.println(user.isValidFirstName());
         System.out.println(user.isValidLastName());
         System.out.println(user.isValidEmail());

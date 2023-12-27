@@ -135,7 +135,8 @@ public class UC1_ValidFirstNameTest {
         //then
         Assertions.assertFalse(actual);
     }
-    @Test
+    @Disabled
+    @Test // we need to disable this test becasue now we are modifing the code with at least 1 numeric number
     void should_return_true_after_entering_password_with8char_and_Atleast_1Uppercase()
     {
         //given
@@ -151,6 +152,28 @@ public class UC1_ValidFirstNameTest {
     {
         //given
         user.setPassword("password");
+        //when
+        boolean actual=user.isValidPassword();
+
+        //then
+        Assertions.assertFalse(actual);
+    }
+    @Test
+    void should_return_true_after_entering_password_with8char_and_Atleast_1Uppercase_and_1_numeric_value()
+    {
+        //given
+        user.setPassword("Passwor1");
+        //when
+        boolean actual=user.isValidPassword();
+
+        //then
+        Assertions.assertTrue(actual);
+    }
+    @Test
+    void should_return_false_after_entering_password_with8char_and_no_1Uppercase_with_no_numeric_value()
+    {
+        //given
+        user.setPassword("Password");
         //when
         boolean actual=user.isValidPassword();
 
