@@ -1,4 +1,12 @@
 //declear class to find valid and invalid enteries
+
+class Myexception extends Exception
+{
+    public Myexception(String str)
+    {
+        super(str);
+    }
+}
 class User1 {
     // all data member are set as private with getter setter method called as encapsulation
     private String firstName;
@@ -6,6 +14,10 @@ class User1 {
     private String email;
     private String mobileNumber;
     private String password;
+    public User1()
+    {
+
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -37,7 +49,11 @@ class User1 {
     }
 
     //method to check First  name is valid or not
-    public Boolean isValidFirstName() {
+    public Boolean isValidFirstName() throws Myexception {
+        if(firstName==null || firstName.length()==0)
+        {
+            throw new Myexception("InvalidFirstNameException");
+        }
         if (firstName.matches("[A-Z]{1,}[A-Za-z]{2,}")) {
             System.out.println("name is valid");
             return true;
@@ -48,7 +64,11 @@ class User1 {
     }
 
     //method to check last name is valid or not
-    public Boolean isValidLastName() {
+    public Boolean isValidLastName() throws Myexception {
+        if(lastName==null || lastName.length()==0)
+        {
+            throw new Myexception("InvalidLastNameException");
+        }
         if (lastName.matches("[A-Z]{1,}[A-Za-z]{2,}")) {
             System.out.println("last name is valid");
             return true;
@@ -59,7 +79,11 @@ class User1 {
     }
 
     //method to check given emails is valid or not
-    public boolean isValidEmail() {
+    public boolean isValidEmail() throws Myexception {
+        if(email==null || email.length()==0)
+        {
+            throw new Myexception("InvalidEmailException");
+        }
         if (email.matches("^[a-z]+[-_.+]{0,1}[[0-9]*[a-z]*]+[@][[0-9]*[a-z]*]+.[a-z]+[a-z]+.[a-z]+[a-z]+$")) {
             System.out.println("valid email");
             return true;
@@ -75,7 +99,11 @@ class User1 {
         return false;
     }
 
-    public boolean isValidMobileNumber() {
+    public boolean isValidMobileNumber() throws Myexception{
+        if(mobileNumber==null || mobileNumber.length()==0)
+        {
+            throw new Myexception("InvalidMobileNumberException");
+        }
         if (mobileNumber.matches("[0-9]{2} [0-9]{10}")) {
             System.out.println(":valid mobile number");
             return true;
@@ -83,7 +111,11 @@ class User1 {
         return false;
     }
 
-    public boolean isValidPassword() {
+    public boolean isValidPassword() throws Myexception {
+        if(password==null || password.length()==0)
+        {
+            throw new Myexception("InvalidPasswordException");
+        }
         if(password.matches("(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()-_=+{}|;:'<>,./?]).{8,}")) {
             System.out.println("valid password");
             return true;
@@ -96,11 +128,36 @@ public class UC1_user_registeration {
     public static void main(String[] args) {
         System.out.println("welcome to user registration program");
         //created object and passed parameter to constructor
-        User1 user = new User1("Pavan", "Zore", "pavanzore345@gmail.com", "91 8766839783", "Pass@wor1");
-        System.out.println(user.isValidFirstName());
-        System.out.println(user.isValidLastName());
-        System.out.println(user.isValidEmail());
-        System.out.println(user.isValidMobileNumber());
-        System.out.println(user.isValidPassword());
+        User1 user = new User1("Pavan", "Zore", "pavanzore345@gmail.com", "91 8766839783", "");
+        try {
+            System.out.println(user.isValidFirstName());
+        } catch (Myexception e) {
+            System.out.println("Caught the exception");
+            System.out.println("Exception occured"+e);
+        }
+        try {
+            System.out.println(user.isValidLastName());
+        } catch (Myexception e) {
+            System.out.println("Caught the exception");
+            System.out.println("Exception occured"+e);
+        }
+        try {
+            System.out.println(user.isValidEmail());
+        } catch (Myexception e) {
+            System.out.println("Caught the exception");
+            System.out.println("Exception occured"+e);
+        }
+        try {
+            System.out.println(user.isValidMobileNumber());
+        } catch (Myexception e) {
+            System.out.println("Caught the exception");
+            System.out.println("Exception occured"+e);
+        }
+        try {
+            System.out.println(user.isValidPassword());
+        } catch (Myexception e) {
+            System.out.println("Caught the exception");
+            System.out.println("Exception occured"+e);
+        }
     }
 }
