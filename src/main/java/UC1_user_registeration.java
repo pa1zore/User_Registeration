@@ -1,5 +1,8 @@
 //declear class to find valid and invalid enteries
-
+   interface  Checkexpression
+{
+    void check() throws Myexception;
+}
 class Myexception extends Exception
 {
     public Myexception(String str)
@@ -124,38 +127,41 @@ class User1 {
         return false;
     }
 }
-public class User_Registration {
+public class UC1_user_registeration {
     public static void main(String[] args) {
         System.out.println("welcome to user registration program");
         //created object and passed parameter to constructor
         User1 user = new User1("Pavan", "Zore", "pavanzore345@gmail.com", "91 8766839783", "");
         try {
-            System.out.println(user.isValidFirstName());
+            Checkexpression validate = user::isValidFirstName;
+            validate.check();
         } catch (Myexception e) {
             System.out.println("Caught the exception");
             System.out.println("Exception occured"+e);
         }
         try {
-            System.out.println(user.isValidLastName());
+            Checkexpression validate = user::isValidLastName;
+            validate.check();
         } catch (Myexception e) {
             System.out.println("Caught the exception");
             System.out.println("Exception occured"+e);
         }
         try {
-            System.out.println(user.isValidEmail());
+            Checkexpression validate = user::isValidEmail;
+            validate.check();
         } catch (Myexception e) {
             System.out.println("Caught the exception");
             System.out.println("Exception occured"+e);
         }
         try {
-            System.out.println(user.isValidMobileNumber());
-        } catch (Myexception e) {
+            Checkexpression validate = user::isValidMobileNumber;
+            validate.check();        } catch (Myexception e) {
             System.out.println("Caught the exception");
             System.out.println("Exception occured"+e);
         }
         try {
-            System.out.println(user.isValidPassword());
-        } catch (Myexception e) {
+            Checkexpression validate = user::isValidPassword;
+            validate.check();        } catch (Myexception e) {
             System.out.println("Caught the exception");
             System.out.println("Exception occured"+e);
         }
