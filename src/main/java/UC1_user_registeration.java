@@ -124,7 +124,7 @@ class User1 {
         return false;
     }
 }
-public class User_Registration {
+public class UC1_user_registeration {
     public static void main(String[] args) {
         System.out.println("welcome to user registration program");
         //created object and passed parameter to constructor
