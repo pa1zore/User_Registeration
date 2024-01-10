@@ -3,7 +3,7 @@ import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class UC1_ValidFirstNameTest  {
+public class User_RegistrationTest {
     User1 user;
     @BeforeEach
     void setup()
